@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мир Математики</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #ff3333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        h2 {
+            color: #007BFF;
+        }
+        .fact {
+            background: white;
+            border-left: 5px solid #007BFF;
+            padding: 10px 15px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .billboard {
+            background: #fff;
+            border: 2px solid #007BFF;
+            margin: 20px 0;
+            padding: 15px;
+            text-align: center;
+        }
+        .billboard img {
+            max-width: 100%;
+            height: auto;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #ff3333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .m {
+            color:#000000;
+            border-radius: 15px; /* Сглаженные углы */
+            padding: 20px;
+            text-align: center; /* Центрирование текста */
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: appear 2s forwards;
+            margin-bottom: 20px; /* Отступ снизу */
+        }
+        .w {
+            color:rgb(255, 255, 255);
+            border-radius: 15px; /* Сглаженные углы */
+            padding: 20px;
+            text-align: center; /* Центрирование текста */
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: appear 2s forwards;
+            margin-bottom: 20px; /* Отступ снизу */
+        }
+        @keyframes appear {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        img {
+            width: 500px; /* Ширина изображения */
+            border-radius: 15px; /* Сглаженные углы для изображения */
+            opacity: 0;
+            animation: imageFadeIn 2s forwards;
+            display: block; /* Отображение изображения как блочного элемента */
+            margin: 20px auto; /* Центрирование изображения */
+        }
+
+        @keyframes imageFadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        input {
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px; 
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            margin-bottom: 15px;
+        }
+        input:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 class="w">Добро пожаловать в мир математики!</h1>
+    <p class="w">Узнайте интересные факты и изучите основы математики.</p>
+</header>
+
+<div class="container">
+    <h2 class="m">Интересные факты о математике</h2>
+    
+    <div class="billboard">
+        <h3 class="m">Математика на доске</h3>
+    </div>
+
+    <div class="fact">
+        <h3 class="m">Золотое сечение</h3>
+        <p class="m">Золотое сечение — это особое отношение между двумя отрезками, при котором отношение всего отрезка к большему из его частей равно отношению большего отрезка к меньшему.</p>
+    </div>
+
+    <div class="fact">
+        <h3 class="m">Число π (Пи)</h3>
+        <p class="m">Число π — это бесконечная непериодическая десятичная дробь, равная отношению длины окружности к её диаметру. Приблизительное значение π равно 3.1415926535898.</p>
+    </div>
+
+    <div class="fact">
+        <h3 class="m">Фракталы</h3>
+        <p class="m">Фракталы — это сложные структуры, которые повторяются на разных масштабах. Примеры фракталов можно найти в природе, например, в листьях деревьев или снежинках.</p>
+    </div>
+
+    <div class="fact">
+        <h3 class="m">Математика и искусство</h3>
+        <p class="m">Математика имеет много общего с искусством. Многие художники использовали математические принципы для создания своих произведений, включая золотое сечение и симметрию.</p>
+    </div>
+</div>
+
+<h2 class="m">Разные штуки</h2>
+<h3 class="m">Калькулятор</h2>
+    <input id="num0">
+    <input id="num1">
+    <div>
+        <button id="plus" onclick="op='+'">+</button>
+        <button id="minus" onclick="op='-'">-</button>
+        <button id="u" onclick="op='*'">*</button>
+        <button id="d" onclick="op='/'">/</button>
+    </div>
+    <button onclick="func()">посчитать</button>
+    <p class="m" id="result"></p>
+<h1 class="m">Случайный факт про математику</h1>
+<button id="generateFact" class="m" onclick="f()">Сгенерировать факт</button>
+
+<script>
+    var op;
+
+function func() {
+	var result;
+
+	var num0 = Number(document.getElementById("num0").value);
+	var num1 = Number(document.getElementById("num1").value);
+
+	switch (op) {
+		case "+":
+			result = num0 + num1;
+			break;
+		case "-":
+			result = num0 - num1;
+			break;
+		case "*":
+			result = num0 * num1;
+			break;
+		case "/":
+			if (num1 == 0) {
+				result = "делить на ноль нельзя!";
+				break;
+			}
+			else {
+				result = num0 / num1;
+				break;
+			}
+	}
+	document.getElementById("result").innerHTML = result;
+}
+
+const fact = ["Математика старше письменности. Археологические находки показывают, что люди использовали математические концепции для счёта и упорядочивания задолго до появления первых систем письма.", "Первые математические символы появились около 4000 лет назад в Вавилоне, задолго до современных алфавитов.", "Концепция нуля возникла относительно поздно: древние цивилизации изначально не имели понятия «ничего» как отдельного числа.", "Множества — фундаментальная концепция, описывающая коллекции объектов, лежит в основе многих математических теорий.", "Алгебра изучает уравнения, функции и их свойства, её методы позволяют описывать сложные процессы в простой форме.", "Геометрия изучает формы, размеры и свойства пространства, находит применение в архитектуре, дизайне и компьютерной графике.", "Фракталы — геометрические фигуры, которые повторяют свой узор на всех масштабах, часто встречаются в природе, например, в форме снежинок или листьев папоротника.", "Геометрия изучает формы, размеры и свойства пространства, находит применение в архитектуре, дизайне и компьютерной графике.", "Последовательность Фибоначчи описывает многие явления в природе: спирали раковин моллюсков, семена подсолнуха, шишки сосны.", "Золотое сечение — особое соотношение, которое встречается в природе, архитектуре и искусстве, его значение приблизительно равно 1,618. ", "Пифагор (365–300 до н. э.) — древнегреческий математик, заложил основы математики как науки, вывел метод построения многоугольников и принцип перемножения натуральных чисел — таблицу Пифагора.", "Евклид (365–300 до н. э.) — древнегреческий математик, «отец геометрии», автор первого из дошедших до нас теоретических трактатов по математике «Начала». "];
+
+function generatFact() {
+    const randomIndex = Math.floor(Math.random() * fact.length);
+    return fact[randomIndex];
+}
+
+function f() {
+    const factToShow = generatFact();
+    alert(factToShow);
+}
+
+
+
+</script>
+
+<footer>
+    <p>&copy; 2025 TheMath. Все права защищены.</p>
+</footer>
+
+</body>
+</html>
